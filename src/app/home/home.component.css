@@ -1,0 +1,137 @@
+* {
+  margin: 0%;
+  padding: 0%;
+}
+video {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  bottom: 0;
+  right: 0;
+}
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Navbar */
+
+ul {
+  position: relative;
+  float: right;
+  list-style-type: none;
+  margin-top: 40px;
+  font-size: 1.5vw;
+}
+ul li {
+  display: inline-block;
+}
+ul li a {
+  text-decoration: none;
+  color: white;
+  /* padding: 5px 40px; */
+  border: 1px solid white transparent;
+  transition: 0.6s ease;
+  margin: 40px;
+}
+ul li a:hover {
+  color: yellow;
+}
+
+/* Right side navbar and Logo */
+
+.logo img {
+  position: relative;
+  float: left;
+  height: 45px;
+  margin-top: 20px;
+}
+.menu {
+  position: relative;
+  float: left;
+  width: 100px;
+  height: auto;
+  margin-top: 33px;
+  font-size: 1.6vw;
+  left: 4%;
+}
+.menu a {
+  text-decoration: none;
+  color: white;
+  border: 1px solid white transparent;
+}
+.menu a:hover {
+  color: yellow;
+}
+.submenu {
+  position: absolute;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+.menu:hover .submenu {
+  display: block;
+  visibility: visible;
+  transition: 2s ease;
+}
+.main {
+  max-width: 1250px;
+  margin: auto;
+}
+
+/* Title  */
+
+.title {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.title h1 {
+  color: white;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 3.5vw;
+}
+
+.title h3 {
+  position: relative;
+  color: white;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.8vw;
+  left: 15%;
+}
+.title p {
+  position: relative;
+  color: white;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  left: 30%;
+  font-size: 1.8vw;
+}
+
+.flag {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+.check {
+  /* background-color: gray; */
+  position: absolute;
+  top: 83%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1%;
+  color: white;
+  width: 72%;
+  border: 3px solid #fff5;
+}
+.check div {
+  display: inline-block;
+  margin: 3%;
+  font-size: 1.5vw;
+}
+.check button:hover {
+  color: red;
+}
