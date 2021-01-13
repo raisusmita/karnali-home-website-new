@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  checkInDate:Date;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onChange(result: Date): void {
+    console.log('onChange: ', result);
   }
 
 }

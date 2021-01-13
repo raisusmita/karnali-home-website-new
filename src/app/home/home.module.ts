@@ -21,6 +21,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
+    
   ],
   exports:[]
 })
