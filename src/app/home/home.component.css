@@ -22,9 +22,9 @@ video {
   margin-left: 17%;
 }
 
-.container-fluid {
+/* .container-fluid {
   padding: 0;
-}
+} */
 
 .book {
   border-radius: 0;
@@ -38,7 +38,7 @@ video {
   border-color: #ffb703;
   font-size: 20px;
   font-weight: 540;
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .main-content {
@@ -54,20 +54,19 @@ video {
 }
 
 /* Title  */
-.title h1 {
+.title h1,
+.title h3,
+.title h4 {
   color: white;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 40px;
 }
 
 .title h3 {
-  color: white;
-  font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 30px;
 }
+
 .title h4 {
-  color: white;
-  font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 20px;
 }
 
@@ -77,13 +76,13 @@ video {
 
 .room-search {
   margin: 100px 260px 0px 260px;
-  padding: 30px;
-  border: 3px solid white;
+  padding: 45px;
+  border: 4px solid#fff3;
 }
 
 /* Date picker */
 ::ng-deep .ant-input {
-  height: 45px;
+  height: 50px;
   border-radius: 0px;
   font-size: 16px;
   color: green;
@@ -92,11 +91,14 @@ video {
   width: 100%;
 }
 
-::ng-deep .ant-picker-input input::placeholder {
-  color: green;
-}
 ::ng-deep .anticon {
   color: green;
+}
+
+::ng-deep .ant-input::placeholder {
+  color: green !important;
+  opacity: 0.6;
+  font-weight: 400;
 }
 
 /* Search Icon */
@@ -109,7 +111,7 @@ video {
 .search {
   border-radius: 0;
   margin: 5px 0;
-  height: 45px;
+  height: 50px;
   width: 100%;
   background-color: #ffb703;
   color: #fff;
@@ -117,7 +119,7 @@ video {
   font-size: 18px;
   font-weight: 540;
   float: right;
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .checkIn,
