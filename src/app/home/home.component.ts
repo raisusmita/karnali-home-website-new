@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  arrival:string;
+  departure:string
   constructor() { }
 
   ngOnInit() {
+    this.initialize()
+  }
+
+  initialize(){
+    this.arrival ="Select Arrival Date"
+    this.departure="Select Departure Date"
   }
 
 }

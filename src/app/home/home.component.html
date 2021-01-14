@@ -1,6 +1,6 @@
-<!-- <video autoplay muted loop>
+<video autoplay muted loop>
     <source src="../../../assets/videos/b.mp4" type="video/mp4">
-</video> -->
+</video>
 <div class="overlay">
 </div>
 <div class="container-fluid">
@@ -10,7 +10,7 @@
                 <img class="logo" src="../../../assets/images/logo.png" alt="Logo" height="57px" width="57px"/>
             </a>
         </div>
-        <button type="button" class="btn btn-dark">BOOK</button>
+        <button type="button" class="btn btn-dark book">BOOK</button>
     </div>
 
     <div class="main-content">
@@ -20,22 +20,22 @@
                 <h3>Restaurant and Bar</h3>
                 <br>
                 <h4>अतिथि देवो भव: </h4>
-                <img class="flag" src="../../../assets/images/flag.gif" alt="flag" height="35px" width="35px">
+                <img class="flag" src="../../../assets/images/flag.gif" alt="flag" height="57px" width="57px">
             </div>
         </div>
         <div class="room-search">
             <form action="">
                 <div class="row">
-                    <div class="col-lg-4 col-m-12 checkIn"> 
-                        
-                    </div>
-                    <div class="col-lg-4 col-m-12 checkOut">
+                    <div class="col-lg-4 col-md-4 col-s-12 checkIn"> 
                         <label class="sr-only" for="inputEmail">Email</label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" required>
+                        <nz-date-picker class="date-picker" [nzPlaceHolder]="arrival">Test</nz-date-picker>
                     </div>
-                    <div class="col-lg-4 col-m-12 searchRoom">
+                    <div class="col-lg-4 col-md-4 col-s-12 checkOut">
                         <label class="sr-only" for="inputEmail">Email</label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" required>
+                        <nz-date-picker class="date-picker" [nzPlaceHolder]="departure">Test</nz-date-picker>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-s-12 searchRoom">
+                        <button type="button" class="btn btn-dark search"><i nz-icon class="searchIcon" nzType="search" nzTheme="outline"></i>Search Room</button>
                     </div>
                 </div>
             </form>

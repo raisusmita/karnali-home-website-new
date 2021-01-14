@@ -19,14 +19,14 @@ video {
   position: relative;
   float: left;
   margin-top: 40px;
-  margin-left: 15%;
+  margin-left: 17%;
 }
 
 .container-fluid {
   padding: 0;
 }
 
-.btn-dark {
+.book {
   border-radius: 0;
   position: absolute;
   right: 0;
@@ -41,15 +41,19 @@ video {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
-/* Title  */
 .main-content {
   position: absolute;
-  top: 35%;
+  top: 25%;
   width: 100%;
   text-align: center;
   margin: 0;
 }
 
+.hotel-info {
+  margin: 20px 0;
+}
+
+/* Title  */
 .title h1 {
   color: white;
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -57,13 +61,11 @@ video {
 }
 
 .title h3 {
-  /* position: relative; */
   color: white;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 30px;
 }
 .title h4 {
-  /* position: relative; */
   color: white;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 20px;
@@ -74,11 +76,56 @@ video {
 }
 
 .room-search {
-  margin: 100px 220px;
-  padding: 50px;
+  margin: 100px 260px 0px 260px;
+  padding: 30px;
   border: 3px solid white;
 }
 
+/* Date picker */
+::ng-deep .ant-input {
+  height: 45px;
+  border-radius: 0px;
+  font-size: 16px;
+  color: green;
+}
+::ng-deep .ant-calendar-picker {
+  width: 100%;
+}
+
+::ng-deep .ant-picker-input input::placeholder {
+  color: green;
+}
+::ng-deep .anticon {
+  color: green;
+}
+
+/* Search Icon */
+::ng-deep .searchIcon {
+  color: #fff;
+  padding-right: 20px;
+  font-size: 20px;
+}
+
+.search {
+  border-radius: 0;
+  margin: 5px 0;
+  height: 45px;
+  width: 100%;
+  background-color: #ffb703;
+  color: #fff;
+  border-color: #ffb703;
+  font-size: 18px;
+  font-weight: 540;
+  float: right;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.checkIn,
+.checkOut {
+  margin: 5px 0;
+}
+
+/* Responsive Media */
 @media screen and (min-width: 320px) {
   .title h1 {
     font-size: calc(35px + 6 * ((100vw - 320px) / 680));
@@ -103,9 +150,9 @@ video {
 }
 
 @media screen and (max-width: 520px) {
-  .btn-dark {
+  .book {
     margin: 0;
-    margin-top: 20px;
+    margin-top: 26px;
     position: absolute;
     top: 20%;
     left: 50%;
@@ -120,28 +167,41 @@ video {
     margin-left: 0;
   }
   .room-search {
-    margin: 100px 30px;
+    margin: 100px 30px 0px 30px;
+
     padding: 30px;
+  }
+  .search {
+    font-size: 16px;
+  }
+  ::ng-deep .ant-input {
+    font-size: 14px;
   }
 }
 
 @media screen and (max-width: 1300px) {
   .room-search {
-    margin: 100px 110px;
+    margin: 100px 110px 0px 110px;
     padding: 30px;
   }
 }
 
 @media screen and (max-width: 1000px) {
   .room-search {
-    margin: 100px 80px;
+    margin: 100px 80px 0px 80px;
     padding: 30px;
+  }
+  .search {
+    width: 100%;
   }
 }
 
 @media screen and (max-width: 700px) {
   .room-search {
-    margin: 100px 50px;
+    margin: 100px 50px 0px 50px;
     padding: 30px;
+  }
+  .search {
+    width: 100%;
   }
 }
