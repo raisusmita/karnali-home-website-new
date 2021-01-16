@@ -16,8 +16,8 @@ export class HomeComponent implements OnInit {
   }
 
   initialize(){
-    this.arrival ="Select Arrival Date"
-    this.departure="Select Departure Date"
+    this.arrival =" Arrival Date"
+    this.departure=" Departure Date"
   }
 
 }
