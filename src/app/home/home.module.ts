@@ -7,7 +7,14 @@ import { AppRoutingModule } from '../app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
 
+registerLocaleData(en);
 
 
 @NgModule({
@@ -21,7 +28,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
+    BrowserAnimationsModule,
+    NgZorroAntdModule,
+    FormsModule,
+    HttpClientModule
+    
   ],
+  providers: [{ provide: NZ_I18N, useValue: en_US }],
   exports:[]
 })
 export class HomeModule { }
