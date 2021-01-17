@@ -13,6 +13,7 @@ import { NgZorroAntdModule, NZ_I18N, en_US } from "ng-zorro-antd";
 import { registerLocaleData } from "@angular/common";
 import en from "@angular/common/locales/en";
 import { RoomComponent } from "./room/room.component";
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 registerLocaleData(en);
 
@@ -31,6 +32,7 @@ registerLocaleData(en);
     NgZorroAntdModule,
     FormsModule,
     HttpClientModule,
+    FlexLayoutModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   exports: [],
