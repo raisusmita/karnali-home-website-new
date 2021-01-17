@@ -4,7 +4,7 @@ import { CheckRoomService } from "../check-room.service";
 @Component({
   selector: "app-room",
   templateUrl: "./room.component.html",
-  styleUrls: ["./room.component.css"],
+  styleUrls: ["./room.component.scss"],
 })
 export class RoomComponent implements OnInit {
   constructor(private roomCheckService: CheckRoomService) {}
