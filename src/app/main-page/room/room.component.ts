@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { CheckRoomService } from "../../check-room.service";
+import { CheckRoomService } from "src/app/home/check-room.service";
 
 @Component({
   selector: "app-room",

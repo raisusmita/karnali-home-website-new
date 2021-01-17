@@ -1,3 +1,4 @@
+import { HomeComponent } from "./../home/home.component";
 import { RouterModule } from "@angular/router";
 import { MainPageComponent } from "./main-page.component";
 import { NgModule } from "@angular/core";
@@ -8,9 +9,13 @@ import { FooterComponent } from "./footer/footer.component";
 import { RoomComponent } from "./room/room.component";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { NgZorroAntdModule } from "ng-zorro-antd";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { NgZorroAntdModule, NZ_I18N, en_US } from "ng-zorro-antd";
+import { registerLocaleData } from "@angular/common";
+import en from "@angular/common/locales/en";
+
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
@@ -18,6 +23,7 @@ import { HttpClientModule } from "@angular/common/http";
     HeaderComponent,
     FooterComponent,
     RoomComponent,
+    HomeComponent,
   ],
   imports: [
     CommonModule,
@@ -31,5 +37,7 @@ import { HttpClientModule } from "@angular/common/http";
     FormsModule,
     HttpClientModule,
   ],
+  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  exports: [],
 })
 export class MainPageModule {}

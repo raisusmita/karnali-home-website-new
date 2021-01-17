@@ -7,9 +7,9 @@ import { Component, OnInit } from "@angular/core";
 })
 export class HeaderComponent implements OnInit {
   components: any[] = [
-    { name: "ROOM", path: "/room-search" },
-    { name: "GALLERY", path: "/gallery" },
-    { name: "CONTACT", path: "/contact" },
+    { name: "ROOM", path: "room" },
+    { name: "GALLERY", path: "gallery" },
+    { name: "CONTACT", path: "contact" },
   ];
   constructor() {}
 

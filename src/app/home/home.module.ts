@@ -1,4 +1,3 @@
-import { MainPageModule } from "./main-page/main-page.module";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { HomeComponent } from "./home.component";
@@ -16,9 +15,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [],
   imports: [
-    MainPageModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule,
