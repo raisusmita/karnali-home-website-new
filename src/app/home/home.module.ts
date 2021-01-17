@@ -1,5 +1,4 @@
-import { FooterComponent } from "./footer/footer.component";
-import { HeaderComponent } from "./header/header.component";
+import { MainPageModule } from "./main-page/main-page.module";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { HomeComponent } from "./home.component";
@@ -12,19 +11,14 @@ import { HttpClientModule } from "@angular/common/http";
 import { NgZorroAntdModule, NZ_I18N, en_US } from "ng-zorro-antd";
 import { registerLocaleData } from "@angular/common";
 import en from "@angular/common/locales/en";
-import { RoomComponent } from "./room/room.component";
 import { FlexLayoutModule } from "@angular/flex-layout";
 
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-    HeaderComponent,
-    FooterComponent,
-    RoomComponent,
-  ],
+  declarations: [HomeComponent],
   imports: [
+    MainPageModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule,
