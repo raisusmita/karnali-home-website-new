@@ -1,44 +1,67 @@
 <video autoplay muted loop>
-    <source src="../../../assets/videos/b.mp4" type="video/mp4">
+  <source src="../../../assets/videos/b.mp4" type="video/mp4" />
 </video>
-<div class="overlay">
-</div>
+<div class="overlay"></div>
 <div class="wrapper">
-    <div class="top-section">
-        <div class="logo">
-            <a href="#" >
-                <img class="logo" src="../../../assets/images/logo.png" alt="Logo" height="57px" width="57px"/>
-            </a>
-        </div>
-        <button type="button" class="btn btn-dark book">BOOK</button>
+  <div class="top-section">
+    <div class="logo">
+      <a href="#">
+        <img
+          class="logo"
+          src="../../../assets/images/logo.png"
+          alt="Logo"
+          height="57px"
+          width="57px"
+        />
+      </a>
     </div>
+    <button type="button" class="btn btn-dark book">BOOK</button>
+  </div>
 
-    <div class="main-content">
-        <div class="hotel-info">
-            <div class="title">
-                <p class="hotelName"> Karnali Home</p>
-                <p class="subtitle">Restaurant and Bar</p>
-                <br>
-                <p class="slogan">अतिथि देवो भव: </p>
-                <img class="flag" src="../../../assets/images/flag.gif" alt="flag" height="57px" width="57px">
-            </div>
-        </div>
-        <div class="room-search">
-            <form action="">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-s-12 checkIn"> 
-                        <label class="sr-only" for="inputEmail">Email</label>
-                        <nz-date-picker class="date-picker" [nzPlaceHolder]="arrival">Test</nz-date-picker>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-s-12 checkOut">
-                        <label class="sr-only" for="inputEmail">Email</label>
-                        <nz-date-picker class="date-picker" [nzPlaceHolder]="departure">Test</nz-date-picker>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-s-12 searchRoom">
-                        <button type="button" class="btn btn-dark search"><i nz-icon class="searchIcon" nzType="search" nzTheme="outline"></i>Search Room</button>
-                    </div>
-                </div>
-            </form>
-        </div>
+  <div class="main-content">
+    <div class="hotel-info">
+      <div class="title">
+        <p class="hotelName">Karnali Home</p>
+        <p class="subtitle">Restaurant and Bar</p>
+        <br />
+        <p class="slogan">अतिथि देवो भव:</p>
+        <img
+          class="flag"
+          src="../../../assets/images/flag.gif"
+          alt="flag"
+          height="57px"
+          width="57px"
+        />
+      </div>
     </div>
+    <div class="room-search">
+      <form action="">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-s-12 checkIn">
+            <label class="sr-only" for="inputEmail">Email</label>
+            <nz-date-picker class="date-picker" [nzPlaceHolder]="arrival"
+              >Test</nz-date-picker
+            >
+          </div>
+          <div class="col-lg-4 col-md-4 col-s-12 checkOut">
+            <label class="sr-only" for="inputEmail">Email</label>
+            <nz-date-picker class="date-picker" [nzPlaceHolder]="departure"
+              >Test</nz-date-picker
+            >
+          </div>
+          <div class="col-lg-4 col-md-4 col-s-12 searchRoom">
+            <button type="button" class="btn btn-dark search">
+              <i
+                nz-icon
+                class="searchIcon"
+                nzType="search"
+                nzTheme="outline"
+              ></i
+              >Search Room
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
