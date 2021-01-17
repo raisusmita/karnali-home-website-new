@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { CheckRoomService } from "../check-room.service";
 
 @Component({
-  selector: 'app-room',
-  templateUrl: './room.component.html',
-  styleUrls: ['./room.component.css']
+  selector: "app-room",
+  templateUrl: "./room.component.html",
+  styleUrls: ["./room.component.css"],
 })
 export class RoomComponent implements OnInit {
-
-  constructor() { }
+  constructor(private roomCheckService: CheckRoomService) {}
 
   ngOnInit() {
+    console.log("from room" + this.roomCheckService.checkInOutDate);
   }
-
 }

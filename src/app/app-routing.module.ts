@@ -1,11 +1,11 @@
+import { RoomComponent } from './home/room/room.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: HomeComponent},
+  {path: '',component: HomeComponent},
+  {path: 'room', component: RoomComponent },
 ]
 
 @NgModule({
