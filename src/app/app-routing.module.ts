@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: "room",
     component: MainPageComponent,
-    children: [{ path: "room", component: RoomComponent }],
+    children: [{ path: "room-search", component: RoomComponent }],
   },
 ];
 

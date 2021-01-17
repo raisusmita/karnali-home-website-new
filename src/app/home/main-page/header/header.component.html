@@ -1,40 +1,123 @@
 <div class="header">
   <div class="main-header">
-    <div class="main-row" fxLayout="row" fxLayoutAlign="space-around center">
-      <div class="child-1" style="background-color: red">Logo</div>
-      <div class="child-2" style="background-color: yellow">Middle</div>
-      <div class="child-2" style="background-color: purple">Contact</div>
-    </div>
-  </div>
-  <nav class="navbar navbar-expand-lg">
-    <p class="hotelName">Karnali Home</p>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto"></ul>
-      <div class="my-2 my-lg-0">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Room </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Gallery</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
+    <div class="wrapper">
+      <div class="top-section" fxLayout="row" fxLayoutAlign="space-between end">
+        <div class="child-1 logo py-4" fxFlex="12">
+          <img
+            src="../../../../assets/images/logo.png"
+            alt="logo"
+            height="120px"
+            width="120px"
+          />
+        </div>
+        <div class="child-2" fxFlex="70">
+          <div class="hotel-services" fxLayout="column" fxLayoutGap="10px">
+            <div class="child-1" fxFlex="30">
+              <h5>KARNALI HOME</h5>
+              <h6>Restaurant and Bar</h6>
+            </div>
+            <div class="child-2">
+              <nz-card style="width: 100%" [nzBordered]="true">
+                <div
+                  class="services"
+                  fxFlex="100"
+                  fxLayout="row"
+                  fxLayoutAlign="space-around center"
+                >
+                  <div class="child-1">
+                    <i nz-icon [nzType]="'wifi'"></i>
+                    <p>Free Wifi</p>
+                  </div>
+                  <div class="child-2">
+                    <i nz-icon nzType="heart" nzTheme="outline"></i>
+                    <p>Air Conditioning</p>
+                  </div>
+                  <div class="child-3">
+                    <i nz-icon nzType="smile" nzTheme="outline"></i>
+                    <p>Daily House Keeping</p>
+                  </div>
+                  <div class="child-4">
+                    <i nz-icon nzType="bell" nzTheme="outline"></i>
+                    <p>Room Service (24 hrs)</p>
+                  </div>
+                  <div class="child-5">
+                    <i nz-icon nzType="skin" nzTheme="outline"></i>
+                    <p>Laundry Service</p>
+                  </div>
+                </div>
+              </nz-card>
+            </div>
+          </div>
+        </div>
+        <div class="child-3 py-4" fxFlex="18">
+          <div
+            class="contacts"
+            fxFlex="100"
+            fxLayout="column"
+            fxLayoutAlign="end center"
+          >
+            <div class="child-1">
+              <h5>CONTACT US</h5>
+            </div>
+            <div class="child-2">
+              <i nz-icon nzType="instagram" nzTheme="outline"></i>
+              <i nz-icon nzType="facebook" nzTheme="outline"></i>
+              <i nz-icon nzType="mail" nzTheme="outline"></i>
+              <i nz-icon nzType="phone" nzTheme="outline"></i>
+            </div>
+            <div class="child-3">
+              <h5 class="phone-number">01-4466554</h5>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </nav>
+    <nav class="navbar navbar-expand-lg">
+      <div class="wrapper">
+        <div
+          class="nav-section"
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+        >
+          <div class="child-1">
+            <p class="hotelName">KARNALI HOME</p>
+          </div>
+          <div class="child-1"></div>
+          <div class="child-3">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto"></ul>
+              <div class="my-2 my-lg-0">
+                <ul
+                  class="navbar-nav mr-auto"
+                  *ngFor="let component of components"
+                >
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="/{{ component.path }}"
+                      >{{ component.name }}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div>
+      <h5>testy</h5>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>

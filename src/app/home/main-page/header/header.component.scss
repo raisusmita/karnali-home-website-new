@@ -1,48 +1,75 @@
-* {
-  margin: 0%;
-  padding: 0%;
+$orange: #ff8a09;
+$green: #025028;
+$white: #fff;
+
+.services {
+  text-align: center;
+  i {
+    color: $orange;
+  }
 }
 
-.main-header {
-  height: 180px;
+::ng-deep .ant-card-body {
+  padding: 15px 0 0;
+}
+
+.wrapper,
+.top-section,
+.nav-section {
+  width: 100% !important;
+  padding: 0 50px;
 }
 
 .hotelName {
-  padding: 0 50px;
-  font-size: 20px;
-  color: #fff;
+  margin: 0;
+}
+
+.hotel-services {
+  .child-1 {
+    text-align: center;
+  }
+}
+.contacts {
+  .child-3 {
+    .phone-number {
+      margin-top: 0.5rem;
+    }
+  }
+  .child-2 {
+    i {
+      font-size: 35px;
+      padding: 0 5px;
+      color: $orange;
+    }
+  }
+}
+
+.navbar-nav a,
+.hotelName {
+  font-size: 17px;
+  color: $white;
   font-family: Arial;
   text-align: center;
-}
-.logo {
-  vertical-align: initial;
+  font-weight: 600;
 }
 
 .navbar {
-  padding: 18px 0;
   width: 100%;
-  background-color: green;
-}
-
-.navbar-nav a {
-  padding: 0 50px;
-  font-size: 20px;
-  color: #fff;
-  font-family: Arial;
-  text-align: center;
+  background-color: $green;
+  padding: 10px 0;
 }
 
 .navbar-brand {
   font-size: 25px;
   text-decoration: none;
   font-family: Arial;
-  color: #fff;
+  color: $white;
   text-align: center;
 }
 
 /* Hamburger Menu  */
 .navbar-toggler {
-  border: 1px solid #fff;
+  border: 1px solid $white;
 }
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
