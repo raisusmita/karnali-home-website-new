@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { CheckRoomService } from "src/app/home/check-room.service";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-room",
@@ -32,11 +33,28 @@ export class RoomComponent implements OnInit {
     { serviceName: "Karnali Home" },
   ];
 
-  test: any;
+  availableRoom: any[];
+  availableRoomCategories: any[] = [];
+
   constructor(private roomCheckService: CheckRoomService) {}
 
   ngOnInit() {
-    this.test = this.roomCheckService.checkInOutDate;
-    console.log("from room" + this.roomCheckService.checkInOutDate);
+    this.initialize();
+  }
+
+  initialize() {
+    this.availableRoom = this.roomCheckService.availableRoomByDates;
+
+    if (this.availableRoom) {
+      Object.values(this.availableRoom).map((x) => {
+        this.availableRoomCategories.push({
+          category: x[0].room_category.room_category,
+          image: environment.serverURL + "storage/" + x[0].room_category.image,
+          type: x[0].room_category.room_type,
+          price: x[0].room_category.room_price,
+          totalNumber: x.length,
+        });
+      });
+    }
   }
 }

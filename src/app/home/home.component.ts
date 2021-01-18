@@ -1,3 +1,4 @@
+import { RoomAvailabilityService } from "./../shared/services/room-availability.service";
 import { CheckRoomService } from "./check-room.service";
 import { MvHome } from "./home.model";
 import { Component, OnInit } from "@angular/core";
@@ -15,7 +16,8 @@ export class HomeComponent implements OnInit {
   date: MvHome = {} as MvHome;
   constructor(
     private roomCheckService: CheckRoomService,
-    private router: Router
+    private router: Router,
+    private roomAvailabilityService: RoomAvailabilityService
   ) {}
 
   ngOnInit() {
@@ -29,9 +31,19 @@ export class HomeComponent implements OnInit {
   }
 
   checkRoomAvailability() {
-    this.roomCheckService.checkInOutDate = this.date;
-    if (this.roomCheckService) {
-      this.router.navigate(["/room"]);
-    }
+    const roomAvailabilityDatesParams = {
+      check_in_date: this.date.checkInDate,
+      check_out_date: this.date.checkOutDate,
+    };
+    this.roomAvailabilityService
+      .getRoomAvailabilityByDate(roomAvailabilityDatesParams)
+      .subscribe((result) => {
+        if (result && result.success) {
+          this.roomCheckService.availableRoomByDates = result.data;
+          if (this.roomCheckService) {
+            this.router.navigate(["/room"]);
+          }
+        }
+      });
   }
 }

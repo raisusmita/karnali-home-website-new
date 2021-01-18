@@ -1,8 +1,12 @@
+<!-- <h1>{{ availableRoom }}</h1> -->
 <div class="room-section">
   <div class="wrapper">
     <div class="main-section" fxLayout="row" fxLayout.lt-lg="column">
       <div class="first-section" fxFlex="70">
-        <div class="card left-card">
+        <div
+          class="card left-card"
+          *ngFor="let availableRoomCategory of availableRoomCategories"
+        >
           <div class="card-body left-card-body">
             <div
               fxLayout="row wrap"
@@ -16,7 +20,7 @@
                 fxFlex.lt-lg="20"
                 fxFlex.lt-md="100"
               >
-                <img src="../../../assets/images/IMG_0652.JPG" alt="" />
+                <img src="{{ availableRoomCategory.image }}" alt="" />
               </div>
               <div
                 class="room-detail"
@@ -24,8 +28,19 @@
                 fxFlex.lt-lg="25"
                 fxFlex.lt-md="100"
               >
-                <ul class="list-group" *ngFor="let service of services">
+                <!-- <ul class="list-group" *ngFor="let service of services">
                   <li class="list-group-item">{{ service.serviceName }}</li>
+                </ul> -->
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    {{ availableRoomCategory.category }}
+                  </li>
+                  <li class="list-group-item">
+                    {{ availableRoomCategory.type }}
+                  </li>
+                  <li class="list-group-item">
+                    {{ availableRoomCategory.totalNumber }} Available
+                  </li>
                 </ul>
               </div>
               <div
@@ -48,7 +63,7 @@
               >
                 <div class="book-room">
                   <div class="price-info">
-                    <h5 class="price">Rs, 1000</h5>
+                    <h5 class="price">{{ availableRoomCategory.price }}</h5>
                   </div>
                   <div class="book-btn">
                     <button type="button" class="btn btn-dark book">
