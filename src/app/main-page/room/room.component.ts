@@ -1,3 +1,4 @@
+import { RoomService } from "./room.service";
 import { Component, OnInit } from "@angular/core";
 import { CheckRoomService } from "src/app/home/check-room.service";
 import { environment } from "src/environments/environment";
@@ -36,7 +37,10 @@ export class RoomComponent implements OnInit {
   availableRoom: any[];
   availableRoomCategories: any[] = [];
 
-  constructor(private roomCheckService: CheckRoomService) {}
+  constructor(
+    private roomCheckService: CheckRoomService,
+    private roomService: RoomService
+  ) {}
 
   ngOnInit() {
     this.initialize();
@@ -46,15 +50,33 @@ export class RoomComponent implements OnInit {
     this.availableRoom = this.roomCheckService.availableRoomByDates;
 
     if (this.availableRoom) {
-      Object.values(this.availableRoom).map((x) => {
+      Object.values(this.availableRoom).map((room) => {
         this.availableRoomCategories.push({
-          category: x[0].room_category.room_category,
-          image: environment.serverURL + "storage/" + x[0].room_category.image,
-          type: x[0].room_category.room_type,
-          price: x[0].room_category.room_price,
-          totalNumber: x.length,
+          category: room[0].room_category.room_category,
+          image:
+            environment.serverURL + "storage/" + room[0].room_category.image,
+          type: room[0].room_category.room_type,
+          price: room[0].room_category.room_price,
+          totalNumber: room.length,
+          showCount: true,
         });
       });
+    } else {
+      this.roomService.getRoomCategory().subscribe((result) => {
+        if (result) {
+          Object.values(result.data).map((room) => {
+            this.availableRoomCategories.push({
+              category: room["room_category"],
+              image: room["image"],
+              type: room["room_type"],
+              price: room["room_price"],
+              showCount: false,
+            });
+          });
+        }
+      });
+
+      console.log(this.availableRoomCategories);
     }
   }
 }
