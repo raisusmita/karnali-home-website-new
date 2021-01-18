@@ -26,6 +26,12 @@ export class RoomComponent implements OnInit {
     },
   ];
 
+  services: any[] = [
+    { serviceName: "Parking Included" },
+    { serviceName: "Room Service" },
+    { serviceName: "Karnali Home" },
+  ];
+
   test: any;
   constructor(private roomCheckService: CheckRoomService) {}
 

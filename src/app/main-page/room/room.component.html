@@ -24,10 +24,8 @@
                 fxFlex.lt-lg="25"
                 fxFlex.lt-md="100"
               >
-                <ul class="list-group">
-                  <li class="list-group-item">Room Service</li>
-                  <li class="list-group-item">Parking Included</li>
-                  <li class="list-group-item">Karnali Home</li>
+                <ul class="list-group" *ngFor="let service of services">
+                  <li class="list-group-item">{{ service.serviceName }}</li>
                 </ul>
               </div>
               <div
