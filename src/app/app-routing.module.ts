@@ -9,7 +9,10 @@ const routes: Routes = [
   {
     path: "",
     component: MainPageComponent,
-    children: [{ path: "room", component: RoomComponent }],
+    children: [
+      { path: "room", component: RoomComponent },
+      // { path: "gallery", component: GalleryComponent },
+    ],
   },
   { path: "**", redirectTo: "" },
 ];
