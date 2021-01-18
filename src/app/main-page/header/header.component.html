@@ -1,7 +1,13 @@
 <div class="header">
   <div class="main-header">
     <div class="wrapper">
-      <div class="top-section" fxLayout="row" fxLayoutAlign="space-between end">
+      <div
+        class="top-section"
+        fxLayout="row"
+        fxLayout.lt-lg="column"
+        fxLayoutAlign.lt-lg="center center"
+        fxLayoutAlign="space-between end"
+      >
         <div class="child-1 logo py-4" fxFlex="12">
           <img
             src="../../../../assets/images/logo.png"
@@ -16,7 +22,7 @@
               <h5>KARNALI HOME</h5>
               <h6>Restaurant and Bar</h6>
             </div>
-            <div class="child-2">
+            <div class="child-2" fxFlex.lt-lg="100">
               <nz-card style="width: 100%" [nzBordered]="true">
                 <div
                   class="services"
