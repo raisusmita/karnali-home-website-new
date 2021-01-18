@@ -1,1 +1,107 @@
-<h1>Room</h1>
+<div class="room-section">
+  <div class="wrapper">
+    <div class="main-section" fxLayout="row" fxLayout.lt-lg="column">
+      <div class="first-section" fxFlex="70">
+        <div class="card left-card">
+          <div class="card-body left-card-body">
+            <div
+              fxLayout="row wrap"
+              fxLayout.lt-sm="column"
+              fxLayoutAlign="space-between center"
+              class="room"
+            >
+              <div
+                class="room-img"
+                fxFlex="20"
+                fxFlex.lt-lg="20"
+                fxFlex.lt-md="100"
+              >
+                <img src="../../../assets/images/IMG_0652.JPG" alt="" />
+              </div>
+              <div
+                class="room-detail"
+                fxFlex="20"
+                fxFlex.lt-lg="25"
+                fxFlex.lt-md="100"
+              >
+                <ul class="list-group">
+                  <li class="list-group-item">Room Service</li>
+                  <li class="list-group-item">Parking Included</li>
+                  <li class="list-group-item">Karnali Home</li>
+                </ul>
+              </div>
+              <div
+                class="room-description"
+                fxFlex="40"
+                fxFlex.lt-lg="55"
+                fxFlex.lt-md="100"
+              >
+                <h5>Description</h5>
+                <p class="desc">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </div>
+              <div
+                class="room-book"
+                fxFlex="20"
+                fxFlex.lt-lg="100"
+                fxFlex.lt-md="100"
+              >
+                <div class="book-room">
+                  <div class="price-info">
+                    <h5 class="price">Rs, 1000</h5>
+                  </div>
+                  <div class="book-btn">
+                    <button type="button" class="btn btn-dark book">
+                      BOOK
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="side-section" fxFlex="30">
+        <div class="card right-card">
+          <div class="card-body right-card-body">
+            <!--Google map-->
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.9760193427746!2d85.3024921150156!3d27.71802668278747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19277eef39ad%3A0x98bd86150680c4b3!2sKarnali%20Home%20Pvt.%20Ltd.!5e0!3m2!1sen!2snp!4v1610971479697!5m2!1sen!2snp"
+              width="100%"
+              height="300"
+              frameborder="0"
+              style="border: 0"
+              allowfullscreen=""
+              aria-hidden="false"
+              tabindex="0"
+            ></iframe>
+          </div>
+          <div class="card-footer">
+            <h5>Explore the area</h5>
+            <table class="table table-borderless">
+              <tbody>
+                <tr *ngFor="let location of nearLocation">
+                  <td>
+                    <i
+                      class="location-icon"
+                      nz-icon
+                      nzType="{{ location.icon }}"
+                      nzTheme="fill"
+                    ></i>
+                  </td>
+                  <td>{{ location.location }}</td>
+                  <td>{{ location.distance }}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- <li class="list-group-item">Kathmandu (KTM-Tribhuvan Intl.)</li> -->
+          </div>
+        </div>
+        <!--Google Maps-->
+      </div>
+    </div>
+  </div>
+</div>
