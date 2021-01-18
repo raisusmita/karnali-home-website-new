@@ -76,12 +76,15 @@ h5 {
     .book {
       border-radius: 0;
       background-color: $green;
-      color: $white;
       border-color: $green;
       font-size: 16px;
       font-weight: 540;
+      color: $white;
       font-family: $family;
       padding: 8px 35px;
+      .book-link {
+        color: $white;
+      }
     }
   }
 }
