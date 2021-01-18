@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { HomeComponent } from "./home/home.component";
 import { RoomComponent } from "./main-page/room/room.component";
 import { MainPageComponent } from "./main-page/main-page.component";
+import { GalleryComponent } from "./main-page/gallery/gallery.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -11,7 +12,7 @@ const routes: Routes = [
     component: MainPageComponent,
     children: [
       { path: "room", component: RoomComponent },
-      // { path: "gallery", component: GalleryComponent },
+      { path: "gallery", component: GalleryComponent },
     ],
   },
   { path: "**", redirectTo: "" },
