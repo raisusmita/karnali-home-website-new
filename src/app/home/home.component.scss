@@ -134,6 +134,11 @@ video {
   margin: 5px 0;
 }
 
+/* Disable search button */
+.btn-dark.disabled,
+.btn-dark:disabled {
+  cursor: not-allowed;
+}
 /* Responsive Media */
 @media screen and (min-width: 320px) {
   .title .hotelName {

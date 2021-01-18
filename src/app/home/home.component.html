@@ -5,7 +5,7 @@
 <div class="wrapper">
   <div class="top-section">
     <div class="logo">
-      <a href="#">
+      <a routerLink="/">
         <img
           class="logo"
           src="../../../assets/images/logo.png"
@@ -15,7 +15,9 @@
         />
       </a>
     </div>
-    <button type="button" class="btn btn-dark book">BOOK</button>
+    <button type="button" routerLink="/room" class="btn btn-dark book">
+      BOOK
+    </button>
   </div>
 
   <div class="main-content">
@@ -35,22 +37,32 @@
       </div>
     </div>
     <div class="room-search">
-      <form action="">
+      <form #roomSearch="ngForm" (ngSubmit)="checkRoomAvailability()">
         <div class="row">
           <div class="col-lg-4 col-md-4 col-s-12 checkIn">
-            <label class="sr-only" for="inputEmail">Email</label>
-            <nz-date-picker class="date-picker" [nzPlaceHolder]="arrival"
-              >Test</nz-date-picker
-            >
+            <nz-date-picker
+              class="date-picker"
+              [(ngModel)]="date.checkInDate"
+              name="checkInDate"
+              [nzPlaceHolder]="arrival"
+              required
+            ></nz-date-picker>
           </div>
           <div class="col-lg-4 col-md-4 col-s-12 checkOut">
-            <label class="sr-only" for="inputEmail">Email</label>
-            <nz-date-picker class="date-picker" [nzPlaceHolder]="departure"
-              >Test</nz-date-picker
-            >
+            <nz-date-picker
+              class="date-picker"
+              [(ngModel)]="date.checkOutDate"
+              name="checkOutDate"
+              [nzPlaceHolder]="departure"
+              required
+            ></nz-date-picker>
           </div>
           <div class="col-lg-4 col-md-4 col-s-12 searchRoom">
-            <button type="button" class="btn btn-dark search">
+            <button
+              type="submit"
+              class="btn btn-dark search"
+              [disabled]="roomSearch.invalid"
+            >
               <i
                 nz-icon
                 class="searchIcon"
@@ -65,3 +77,4 @@
     </div>
   </div>
 </div>
+<router-outlet></router-outlet>

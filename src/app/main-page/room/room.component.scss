@@ -1,0 +1,111 @@
+$black: #242424;
+$orange: #ff8a09;
+$green: #025028;
+$white: #fff;
+
+$family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+* {
+  color: $black;
+  font-family: $family;
+}
+
+h5 {
+  margin: 0.75rem 0;
+  font-weight: 600;
+}
+
+.wrapper,
+.main-section {
+  width: 100% !important;
+  padding: 0 50px;
+}
+
+.card {
+  border-radius: 0;
+}
+.side-section {
+  .right-card {
+    border: 0;
+  }
+  .card .right-card-body {
+    padding-right: 0;
+    text-align: center;
+  }
+  .card-footer {
+    border-top: 0;
+    background-color: $white;
+    padding-top: 0;
+    .table td {
+      border: 0;
+    }
+    .location-icon {
+      font-size: 20px;
+      color: $green;
+    }
+  }
+}
+
+.room-img {
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.list-group,
+.desc {
+  text-align: justify;
+  li {
+    border: 0;
+    border-radius: 0;
+    font-size: medium;
+    padding: 5px 20px;
+    font-weight: 500;
+  }
+}
+
+.book-room {
+  text-align: center;
+
+  .price-info {
+    .price {
+      color: $orange;
+      font-weight: 600;
+    }
+  }
+  .book-btn {
+    .book {
+      border-radius: 0;
+      background-color: $green;
+      border-color: $green;
+      font-size: 16px;
+      font-weight: 540;
+      color: $white;
+      font-family: $family;
+      padding: 8px 35px;
+      .book-link {
+        color: $white;
+      }
+    }
+  }
+}
+
+@media (max-width: 959px) {
+  .list-group {
+    li {
+      text-align: center;
+    }
+  }
+
+  .wrapper,
+  .main-section {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 599px) {
+  .wrapper,
+  .main-section {
+    padding: 0 10px;
+  }
+}

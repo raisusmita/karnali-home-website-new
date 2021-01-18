@@ -1,0 +1,98 @@
+$orange: #ff8a09;
+$green: #025028;
+$white: #fff;
+$black: #242424;
+
+$family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+* {
+  color: $black;
+}
+
+.services {
+  text-align: center;
+  i {
+    color: $orange;
+  }
+}
+
+::ng-deep .ant-card-body {
+  padding: 15px 0 0;
+}
+
+.wrapper,
+.top-section,
+.nav-section {
+  width: 100% !important;
+  padding: 0 50px;
+}
+
+.hotelName {
+  margin: 0;
+}
+
+.hotel-services {
+  .child-1 {
+    text-align: center;
+  }
+}
+.contacts {
+  .child-3 {
+    .phone-number {
+      margin-top: 0.5rem;
+    }
+  }
+  .child-2 {
+    i {
+      font-size: 35px;
+      padding: 0 5px;
+      color: $orange;
+    }
+  }
+}
+
+.navbar-nav a,
+.hotelName {
+  font-size: 17px;
+  color: $white;
+  font-family: Arial;
+  text-align: center;
+  font-weight: 600;
+}
+
+.navbar {
+  width: 100%;
+  background-color: $green;
+  padding: 10px 0;
+}
+
+.navbar-brand {
+  font-size: 25px;
+  text-decoration: none;
+  font-family: Arial;
+  color: $white;
+  text-align: center;
+}
+
+/* Hamburger Menu  */
+.navbar-toggler {
+  border: 1px solid $white;
+}
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 959px) {
+  .wrapper,
+  .top-section,
+  .nav-section {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 599px) {
+  .wrapper,
+  .top-section,
+  .nav-section {
+    padding: 0 10px;
+  }
+}
