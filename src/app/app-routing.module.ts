@@ -1,3 +1,4 @@
+import { ContactComponent } from "./main-page/contact/contact.component";
 import { RouterModule, Routes } from "@angular/router";
 import { NgModule } from "@angular/core";
 import { HomeComponent } from "./home/home.component";
@@ -13,6 +14,7 @@ const routes: Routes = [
     children: [
       { path: "room", component: RoomComponent },
       { path: "gallery", component: GalleryComponent },
+      { path: "contact", component: ContactComponent },
     ],
   },
   { path: "**", redirectTo: "" },

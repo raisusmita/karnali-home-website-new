@@ -14,7 +14,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { NgZorroAntdModule, NZ_I18N, en_US } from "ng-zorro-antd";
 import { registerLocaleData } from "@angular/common";
 import en from "@angular/common/locales/en";
-import { GalleryComponent } from './gallery/gallery.component';
+import { GalleryComponent } from "./gallery/gallery.component";
+import { ContactComponent } from "./contact/contact.component";
 
 registerLocaleData(en);
 
@@ -26,6 +27,7 @@ registerLocaleData(en);
     RoomComponent,
     HomeComponent,
     GalleryComponent,
+    ContactComponent,
   ],
   imports: [
     CommonModule,
