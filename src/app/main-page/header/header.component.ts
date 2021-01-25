@@ -1,3 +1,4 @@
+import { RoomService } from "./../room/room.service";
 import { Component, OnInit } from "@angular/core";
 
 @Component({
@@ -12,7 +13,13 @@ export class HeaderComponent implements OnInit {
   //   { name: "GALLERY", path: "gallery" },
   //   { name: "CONTACT", path: "contact" },
   // ];
-  constructor() {}
+  constructor(private roomService: RoomService) {}
 
   ngOnInit() {}
+
+  getRoomSideSec() {
+    this.roomService.roomComponent = true;
+    this.roomService.bookComponent = false;
+    console.log(this.roomService.sideSection);
+  }
 }

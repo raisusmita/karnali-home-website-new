@@ -35,6 +35,8 @@ export class HomeComponent implements OnInit {
       check_in_date: this.date.checkInDate,
       check_out_date: this.date.checkOutDate,
     };
+
+    this.roomCheckService.checkDates = roomAvailabilityDatesParams;
     this.roomAvailabilityService
       .getRoomAvailabilityByDate(roomAvailabilityDatesParams)
       .subscribe((result) => {

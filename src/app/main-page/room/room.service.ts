@@ -7,11 +7,18 @@ import { environment } from "src/environments/environment";
   providedIn: "root",
 })
 export class RoomService {
+  sideSection: boolean;
+  public roomComponent: boolean;
+  public bookComponent: boolean;
   constructor(private http: HttpClient) {}
 
-  private readonly baseURL = environment.apiURL + "room_categories";
+  private readonly baseURL = environment.apiURL;
 
   getRoomCategory(): Observable<any> {
-    return this.http.get(this.baseURL);
+    return this.http.get(this.baseURL + "room_categories");
+  }
+
+  addBooking(booking: any): Observable<any> {
+    return this.http.post(this.baseURL + "multipleBooking", booking);
   }
 }
