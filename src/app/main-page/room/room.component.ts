@@ -6,13 +6,14 @@ import { AfterViewInit, Component, OnInit } from "@angular/core";
 import { CheckRoomService } from "src/app/home/check-room.service";
 import { environment } from "src/environments/environment";
 import { MvBooking } from "src/app/shared/model/booking/booking.model";
+import { NzNotificationService } from "ng-zorro-antd";
 
 @Component({
   selector: "app-room",
   templateUrl: "./room.component.html",
   styleUrls: ["./room.component.scss"],
 })
-export class RoomComponent implements OnInit, AfterViewInit {
+export class RoomComponent implements OnInit {
   nearLocation: any[] = [
     {
       icon: "environment",
@@ -40,22 +41,21 @@ export class RoomComponent implements OnInit, AfterViewInit {
 
   availableRoom: any[];
   availableRoomCategories: any[] = [];
-  roomComponent: boolean;
-  bookComponent: boolean;
   arrival: string;
   departure: string;
 
   customer: MvCustomer = {} as MvCustomer;
   booking: MvBooking = {} as MvBooking;
   bookingDates: MvBookDates = {} as MvBookDates;
-  checked: boolean = true;
-  selectedRoomCategory: any;
+  checked: number;
+  selectedRoomCategory: any = {};
   checkedRoom: any = {};
+  availableRoomCount: any = {};
 
   constructor(
     private roomCheckService: CheckRoomService,
     private roomService: RoomService,
-    private router: Router
+    private notification: NzNotificationService
   ) {}
 
   ngOnInit() {
@@ -64,10 +64,22 @@ export class RoomComponent implements OnInit, AfterViewInit {
 
   initialize() {
     this.availableRoom = this.roomCheckService.availableRoomByDates;
-    this.roomComponent = true;
-    this.bookComponent = false;
+    this.roomService.roomComponent = true;
+    this.roomService.bookComponent = false;
     this.arrival = " Arrival Date";
     this.departure = " Departure Date";
+    this.booking = {
+      check_in_date: null,
+      check_out_date: null,
+      room_category_detal: "",
+      room_category_id: 0,
+      room_category: [
+        { number_of_rooms: 0, number_of_adults: 0, number_of_children: 0 },
+      ],
+      number_of_rooms: 0,
+      number_of_adults: 0,
+      number_of_children: 0,
+    };
     if (this.availableRoom) {
       Object.values(this.availableRoom).map((room) => {
         this.availableRoomCategories.push({
@@ -80,11 +92,22 @@ export class RoomComponent implements OnInit, AfterViewInit {
           totalNumber: room.length,
           showCount: true,
         });
+        this.booking.room_category.push({
+          number_of_rooms: null,
+          number_of_adults: null,
+          number_of_children: null,
+        });
+        this.availableRoomCount[room[0].room_category.id] = room.length;
       });
     } else {
       this.roomService.getRoomCategory().subscribe((result) => {
         if (result) {
           Object.values(result.data).map((room) => {
+            this.booking.room_category.push({
+              number_of_rooms: null,
+              number_of_adults: null,
+              number_of_children: null,
+            });
             this.availableRoomCategories.push({
               room_category_id: room["id"],
               category: room["room_category"],
@@ -109,43 +132,53 @@ export class RoomComponent implements OnInit, AfterViewInit {
       this.booking.check_in_date = null;
       this.booking.check_out_date = null;
     }
-    this.selectedRoomCategory = availableRoomCategory;
+    this.selectedRoomCategory[availableRoomCategory.room_category_id] = true;
     this.checkedRoom[availableRoomCategory.room_category_id] = true;
   }
 
   onChecked(e, room_category_id) {
     this.checkedRoom[room_category_id] = e.target.checked;
-    // let roomNum = document.getElementById(
-    //   "roomNum" + room_category_id
-    // ) as HTMLInputElement;
-    // roomNum.required = true;
-    // let adultNum = document.getElementById(
-    //   "adultNum" + room_category_id
-    // ) as HTMLInputElement;
-    // adultNum.required = true;
-    // let childNum = document.getElementById(
-    //   "childNum" + room_category_id
-    // ) as HTMLInputElement;
-    // childNum.required = true;
+    if (!e.target.checked) {
+      this.booking.room_category[room_category_id].number_of_rooms = null;
+      this.booking.room_category[room_category_id].number_of_adults = null;
+      this.booking.room_category[room_category_id].number_of_children = null;
+    }
+  }
+
+  unselectRow(room_category_id) {
+    if (
+      this.booking.room_category[room_category_id].number_of_rooms == null &&
+      this.booking.room_category[room_category_id].number_of_adults == null &&
+      this.booking.room_category[room_category_id].number_of_children == null
+    ) {
+      this.selectedRoomCategory[room_category_id] = false;
+    } else {
+      this.selectedRoomCategory[room_category_id] = true;
+    }
   }
 
   onSubmit(form) {
-    form.value.bookingDates.checkInDate = new Date(
-      form.value.bookingDates.checkInDate
-    );
-    form.value.bookingDates.checkOutDate = new Date(
-      form.value.bookingDates.checkOutDate
-    );
     const bookParams = form.value;
-
     this.roomService.addBooking(bookParams).subscribe((result) => {
-      console.log(result);
+      if (result.success) {
+        //reset form
+        form.reset();
+        //unchecked all the checkbox
+        Object.keys(this.selectedRoomCategory).map(
+          (checkedRoom) => (this.selectedRoomCategory[checkedRoom] = false)
+        );
+        this.notification.create(
+          "success",
+          "Success",
+          "The room has been booked successfully!!"
+        );
+      } else {
+        this.notification.create(
+          "error",
+          "Booking Failed",
+          "Please, contact us directly!!"
+        );
+      }
     });
-  }
-
-  ngAfterViewInit() {
-    if ((this.roomService.sideSection = true)) {
-      this.roomComponent = true;
-    }
   }
 }

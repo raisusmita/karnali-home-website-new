@@ -264,10 +264,9 @@
                           type="checkbox"
                           name="checked"
                           [checked]="
-                            availableRoomCategory.room_category_id ==
-                            selectedRoomCategory.room_category_id
-                              ? true
-                              : false
+                            selectedRoomCategory[
+                              availableRoomCategory.room_category_id
+                            ]
                           "
                           (change)="
                             onChecked(
@@ -291,14 +290,31 @@
                                 'roomNum' +
                                   availableRoomCategory.room_category_id
                               }}"
-                              (ngModel)="
-                                (booking.room_category[
+                              [(ngModel)]="
+                                booking.room_category[
                                   availableRoomCategory.room_category_id
-                                ].number_of_rooms)
+                                ].number_of_rooms
+                              "
+                              (blur)="
+                                unselectRow(
+                                  availableRoomCategory.room_category_id
+                                )
                               "
                               class="form-control"
                               type="number"
                               name="number_of_rooms"
+                              max="{{
+                                availableRoomCount[
+                                  availableRoomCategory.room_category_id
+                                ]
+                              }}"
+                              min="1"
+                              step="1"
+                              [required]="
+                                checkedRoom[
+                                  availableRoomCategory.room_category_id
+                                ]
+                              "
                             />
                           </div>
                         </div>
@@ -309,10 +325,15 @@
                           </div>
                           <div class="col-6">
                             <input
-                              (ngModel)="
-                                (booking.room_category[
+                              [(ngModel)]="
+                                booking.room_category[
                                   availableRoomCategory.room_category_id
-                                ].number_of_adults)
+                                ].number_of_adults
+                              "
+                              (change)="
+                                unselectRow(
+                                  availableRoomCategory.room_category_id
+                                )
                               "
                               class="form-control"
                               type="number"
@@ -330,10 +351,15 @@
                           </div>
                           <div class="col-6">
                             <input
-                              (ngModel)="
-                                (booking.room_category[
+                              [(ngModel)]="
+                                booking.room_category[
                                   availableRoomCategory.room_category_id
-                                ].number_of_children)
+                                ].number_of_children
+                              "
+                              (change)="
+                                unselectRow(
+                                  availableRoomCategory.room_category_id
+                                )
                               "
                               class="form-control"
                               type="number"
@@ -342,11 +368,6 @@
                                 'childNum' +
                                   availableRoomCategory.room_category_id
                               }}"
-                              [required]="
-                                checkedRoom[
-                                  availableRoomCategory.room_category_id
-                                ]
-                              "
                             />
                           </div>
                         </div>
@@ -359,7 +380,7 @@
                   [disabled]="bookForm.invalid"
                   class="btn btn-primary"
                 >
-                  Sign in
+                  Book
                 </button>
               </form>
             </div>
