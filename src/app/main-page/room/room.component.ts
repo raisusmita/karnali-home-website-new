@@ -1,3 +1,4 @@
+import { RoomAvailabilityService } from "./../../shared/services/room-availability.service";
 import { MvBookDates } from "./../../shared/model/booking/booking.model";
 import { MvCustomer } from "./../../shared/model/customer/customer.model";
 import { Router } from "@angular/router";
@@ -55,7 +56,8 @@ export class RoomComponent implements OnInit {
   constructor(
     private roomCheckService: CheckRoomService,
     private roomService: RoomService,
-    private notification: NzNotificationService
+    private notification: NzNotificationService,
+    private roomAvailabilityService: RoomAvailabilityService
   ) {}
 
   ngOnInit() {
@@ -63,6 +65,7 @@ export class RoomComponent implements OnInit {
   }
 
   initialize() {
+    this.availableRoomCategories.length = 0;
     this.availableRoom = this.roomCheckService.availableRoomByDates;
     this.roomService.roomComponent = true;
     this.roomService.bookComponent = false;
@@ -80,6 +83,10 @@ export class RoomComponent implements OnInit {
       number_of_adults: 0,
       number_of_children: 0,
     };
+    this.getDataForSearchOrAllAvailable();
+  }
+
+  getDataForSearchOrAllAvailable() {
     if (this.availableRoom) {
       Object.values(this.availableRoom).map((room) => {
         this.availableRoomCategories.push({
@@ -103,13 +110,13 @@ export class RoomComponent implements OnInit {
       this.roomService.getRoomCategory().subscribe((result) => {
         if (result) {
           Object.keys(result.data).map((key) => {
-            this.booking.room_category[result.data[key]] = {
+            this.booking.room_category[result.data[key][0].room_category_id] = {
               number_of_rooms: null,
               number_of_adults: null,
               number_of_children: null,
             };
             this.availableRoomCategories.push({
-              room_category_id: result.data[key],
+              room_category_id: result.data[key][0].room_category_id,
               category: result.data[key][0].room_category.room_category,
               image:
                 environment.serverURL +
@@ -120,7 +127,8 @@ export class RoomComponent implements OnInit {
               totalNumber: result.data[key].length,
               showCount: false,
             });
-            this.availableRoomCount[result.data[key]] = result.data[key].length;
+            this.availableRoomCount[result.data[key][0].room_category_id] =
+              result.data[key].length;
           });
         }
       });
@@ -163,28 +171,61 @@ export class RoomComponent implements OnInit {
     }
   }
 
-  onSubmit(form) {
-    const bookParams = form.value;
-    this.roomService.addBooking(bookParams).subscribe((result) => {
-      if (result.success) {
-        //reset form
-        form.reset();
-        //unchecked all the checkbox
-        Object.keys(this.selectedRoomCategory).map(
-          (checkedRoom) => (this.selectedRoomCategory[checkedRoom] = false)
-        );
-        this.notification.create(
-          "success",
-          "Success",
-          "The room has been booked successfully!!"
-        );
-      } else {
-        this.notification.create(
-          "error",
-          "Booking Failed",
-          "Please, contact us directly!!"
-        );
+  getupdatedRoomCategoryBySearch(): Promise<any> {
+    return new Promise((resolve1, reject) => {
+      if (this.availableRoom) {
+        this.roomAvailabilityService
+          .getRoomAvailabilityByDate(this.roomCheckService.checkDates)
+          .subscribe((result) => {
+            if (result && result.success) {
+              this.roomCheckService.availableRoomByDates = result.data;
+              resolve1(true);
+            }
+          });
       }
+    });
+  }
+
+  onSubmit(form): Promise<any> {
+    return new Promise((resolve1, reject) => {
+      const bookParams = form.value;
+      this.roomService.addBooking(bookParams).subscribe((result) => {
+        if (result.success) {
+          //reset form
+          form.reset();
+          //unchecked all the checkbox
+          Object.keys(this.selectedRoomCategory).map(
+            (checkedRoom) => (this.selectedRoomCategory[checkedRoom] = false)
+          );
+          this.notification.create(
+            "success",
+            "Success",
+            "The room has been booked successfully!!"
+          );
+          // tslint:disable-next-line: no-unused-expression
+          new Promise((resolve, reject) => {
+            Promise.all([this.getupdatedRoomCategoryBySearch()]).then(
+              ([response]) => {
+                this.initialize();
+                resolve(true);
+              },
+              reject
+            );
+            resolve1(true);
+          });
+        } else {
+          // tslint:disable-next-line: no-unused-expression
+          new Promise((resolve, reject) => {
+            this.notification.create(
+              "error",
+              "Booking Failed",
+              "Please, contact us directly!!"
+            );
+            resolve(true);
+          });
+          resolve1(true);
+        }
+      });
     });
   }
 }
