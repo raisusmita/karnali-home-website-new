@@ -1,5 +1,6 @@
 import { RoomService } from "./../room/room.service";
 import { Component, OnInit } from "@angular/core";
+import { CheckRoomService } from "src/app/home/check-room.service";
 
 @Component({
   selector: "app-header",
@@ -20,6 +21,6 @@ export class HeaderComponent implements OnInit {
   getRoomSideSec() {
     this.roomService.roomComponent = true;
     this.roomService.bookComponent = false;
-    console.log(this.roomService.sideSection);
+    this.roomService.fromSearchByDates = false;
   }
 }

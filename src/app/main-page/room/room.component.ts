@@ -87,7 +87,7 @@ export class RoomComponent implements OnInit {
   }
 
   getDataForSearchOrAllAvailable() {
-    if (this.availableRoom) {
+    if (this.availableRoom && this.roomService.fromSearchByDates) {
       Object.values(this.availableRoom).map((room) => {
         this.availableRoomCategories.push({
           room_category_id: room[0].room_category.id,
