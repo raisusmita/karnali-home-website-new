@@ -73,9 +73,9 @@ export class RoomComponent implements OnInit {
       check_out_date: null,
       room_category_detal: "",
       room_category_id: 0,
-      room_category: [
-        { number_of_rooms: 0, number_of_adults: 0, number_of_children: 0 },
-      ],
+      room_category: {
+        0: { number_of_rooms: 0, number_of_adults: 0, number_of_children: 0 },
+      },
       number_of_rooms: 0,
       number_of_adults: 0,
       number_of_children: 0,
@@ -92,30 +92,35 @@ export class RoomComponent implements OnInit {
           totalNumber: room.length,
           showCount: true,
         });
-        this.booking.room_category.push({
+        this.booking.room_category[room[0].room_category.id] = {
           number_of_rooms: null,
           number_of_adults: null,
           number_of_children: null,
-        });
+        };
         this.availableRoomCount[room[0].room_category.id] = room.length;
       });
     } else {
       this.roomService.getRoomCategory().subscribe((result) => {
         if (result) {
-          Object.values(result.data).map((room) => {
-            this.booking.room_category.push({
+          Object.keys(result.data).map((key) => {
+            this.booking.room_category[result.data[key]] = {
               number_of_rooms: null,
               number_of_adults: null,
               number_of_children: null,
-            });
+            };
             this.availableRoomCategories.push({
-              room_category_id: room["id"],
-              category: room["room_category"],
-              image: room["image"],
-              type: room["room_type"],
-              price: room["room_price"],
+              room_category_id: result.data[key],
+              category: result.data[key][0].room_category.room_category,
+              image:
+                environment.serverURL +
+                "storage/" +
+                result.data[key][0].room_category.image,
+              type: result.data[key][0].room_category.room_type,
+              price: result.data[key][0].room_category.room_price,
+              totalNumber: result.data[key].length,
               showCount: false,
             });
+            this.availableRoomCount[result.data[key]] = result.data[key].length;
           });
         }
       });
@@ -138,6 +143,7 @@ export class RoomComponent implements OnInit {
 
   onChecked(e, room_category_id) {
     this.checkedRoom[room_category_id] = e.target.checked;
+    this.selectedRoomCategory[room_category_id] = e.target.checked;
     if (!e.target.checked) {
       this.booking.room_category[room_category_id].number_of_rooms = null;
       this.booking.room_category[room_category_id].number_of_adults = null;

@@ -303,6 +303,7 @@
                               class="form-control"
                               type="number"
                               name="number_of_rooms"
+                              onKeyDown="return false"
                               max="{{
                                 availableRoomCount[
                                   availableRoomCategory.room_category_id
@@ -338,6 +339,7 @@
                               class="form-control"
                               type="number"
                               name="number_of_adults"
+                              onKeyDown="return false"
                               id="{{
                                 'adultNum' +
                                   availableRoomCategory.room_category_id
@@ -364,6 +366,7 @@
                               class="form-control"
                               type="number"
                               name="number_of_children"
+                              onKeyDown="return false"
                               id="{{
                                 'childNum' +
                                   availableRoomCategory.room_category_id
