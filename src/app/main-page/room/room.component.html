@@ -71,12 +71,13 @@
                     </h5>
                   </div>
                   <div class="book-btn">
-                    <button type="button" class="btn btn-dark book">
-                      <a
-                        class="book-link"
-                        href="https://forms.gle/ytLGfs97xGDRb2jw6"
-                        >BOOK</a
-                      >
+                    <button
+                      type="button"
+                      class="btn btn-dark book"
+                      (click)="bookRoom(availableRoomCategory)"
+                    >
+                      <a class="book-link">BOOK</a>
+                      <!-- href="https://forms.gle/ytLGfs97xGDRb2jw6" -->
                     </button>
                   </div>
                 </div>
@@ -86,7 +87,7 @@
         </div>
       </div>
       <div class="side-section" fxFlex="30">
-        <div class="card right-card">
+        <div class="card right-card" *ngIf="roomService.roomComponent">
           <div class="card-body right-card-body">
             <!--Google map-->
             <iframe
@@ -123,6 +124,271 @@
           </div>
         </div>
         <!--Google Maps-->
+
+        <div
+          class="card right-card table-card"
+          *ngIf="roomService.bookComponent"
+        >
+          <div class="card">
+            <div class="card-body">
+              <h5>Please fill up the form</h5>
+              <form #bookForm="ngForm" (ngSubmit)="onSubmit(bookForm)">
+                <div class="customer-detail">
+                  <div class="form-row" ngModelGroup="customer">
+                    <div class="form-group col-md-6">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="First Name"
+                        name="first_name"
+                        [(ngModel)]="customer.first_name"
+                        required
+                      />
+                    </div>
+                    <div class="form-group col-md-6">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Middle Name"
+                        name="last_name"
+                        [(ngModel)]="customer.middle_name"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-row" ngModelGroup="customer">
+                    <div class="form-group col-md-6">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Last Name"
+                        name="last_name"
+                        [(ngModel)]="customer.last_name"
+                        required
+                      />
+                    </div>
+                    <div class="form-group col-md-6">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Address"
+                        name="address"
+                        [(ngModel)]="customer.address"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="form-row" ngModelGroup="customer">
+                    <div class="form-group col-md-6">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Country"
+                        name="country"
+                        [(ngModel)]="customer.country"
+                        required
+                      />
+                    </div>
+                    <div class="form-group col-md-6">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Phone"
+                        name="phone"
+                        [(ngModel)]="customer.phone"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group" ngModelGroup="customer">
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Email"
+                      name="email"
+                      [(ngModel)]="customer.email"
+                      required
+                    />
+                  </div>
+                  <div class="form-row" ngModelGroup="bookingDates">
+                    <div class="form-group col-md-6">
+                      <nz-date-picker
+                        class="date-picker"
+                        [(ngModel)]="booking.check_in_date"
+                        name="checkInDate"
+                        [nzPlaceHolder]="arrival"
+                        required
+                      ></nz-date-picker>
+                      <!-- <input
+                        type="date"
+                        class="date-picker"
+                        [(ngModel)]="booking.check_in_date"
+                        name="checkInDate"
+                        [placeholder]="arrival"
+                        required
+                      /> -->
+                    </div>
+                    <div class="form-group col-md-6">
+                      <nz-date-picker
+                        class="date-picker"
+                        [(ngModel)]="booking.check_out_date"
+                        name="checkOutDate"
+                        [nzPlaceHolder]="departure"
+                        required
+                      ></nz-date-picker>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Table for room category -->
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">Select</th>
+                      <th scope="col">Category</th>
+                      <th scope="col">Number of</th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    ngModelGroup="booking"
+                    *ngFor="
+                      let availableRoomCategory of availableRoomCategories
+                    "
+                  >
+                    <tr
+                      ngModelGroup="{{
+                        availableRoomCategory.room_category_id
+                      }}"
+                    >
+                      <td>
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          name="checked"
+                          [checked]="
+                            selectedRoomCategory[
+                              availableRoomCategory.room_category_id
+                            ]
+                          "
+                          (change)="
+                            onChecked(
+                              $event,
+                              availableRoomCategory.room_category_id
+                            )
+                          "
+                        />
+                      </td>
+                      <td>
+                        {{ availableRoomCategory.category }}
+                      </td>
+                      <td id="{{ availableRoomCategory.category }}">
+                        <div class="row rooms">
+                          <div class="col-6">
+                            <label for="no_of_room">Rooms</label>
+                          </div>
+                          <div class="col-6">
+                            <input
+                              id="{{
+                                'roomNum' +
+                                  availableRoomCategory.room_category_id
+                              }}"
+                              [(ngModel)]="
+                                booking.room_category[
+                                  availableRoomCategory.room_category_id
+                                ].number_of_rooms
+                              "
+                              (blur)="
+                                unselectRow(
+                                  availableRoomCategory.room_category_id
+                                )
+                              "
+                              class="form-control"
+                              type="number"
+                              name="number_of_rooms"
+                              onKeyDown="return false"
+                              max="{{
+                                availableRoomCount[
+                                  availableRoomCategory.room_category_id
+                                ]
+                              }}"
+                              min="1"
+                              step="1"
+                              [required]="
+                                checkedRoom[
+                                  availableRoomCategory.room_category_id
+                                ]
+                              "
+                            />
+                          </div>
+                        </div>
+
+                        <div class="row rooms">
+                          <div class="col-6">
+                            <label for="no_of_room">Adults</label>
+                          </div>
+                          <div class="col-6">
+                            <input
+                              [(ngModel)]="
+                                booking.room_category[
+                                  availableRoomCategory.room_category_id
+                                ].number_of_adults
+                              "
+                              (change)="
+                                unselectRow(
+                                  availableRoomCategory.room_category_id
+                                )
+                              "
+                              class="form-control"
+                              type="number"
+                              name="number_of_adults"
+                              onKeyDown="return false"
+                              id="{{
+                                'adultNum' +
+                                  availableRoomCategory.room_category_id
+                              }}"
+                            />
+                          </div>
+                        </div>
+                        <div class="row rooms">
+                          <div class="col-6">
+                            <label for="no_of_room">Children</label>
+                          </div>
+                          <div class="col-6">
+                            <input
+                              [(ngModel)]="
+                                booking.room_category[
+                                  availableRoomCategory.room_category_id
+                                ].number_of_children
+                              "
+                              (change)="
+                                unselectRow(
+                                  availableRoomCategory.room_category_id
+                                )
+                              "
+                              class="form-control"
+                              type="number"
+                              name="number_of_children"
+                              onKeyDown="return false"
+                              id="{{
+                                'childNum' +
+                                  availableRoomCategory.room_category_id
+                              }}"
+                            />
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <button
+                  type="submit"
+                  [disabled]="bookForm.invalid"
+                  class="btn btn-primary"
+                >
+                  Book
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

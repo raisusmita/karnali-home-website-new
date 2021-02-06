@@ -2,6 +2,7 @@ $black: #242424;
 $orange: #ff8a09;
 $green: #025028;
 $white: #fff;
+$dark-gray: #495057;
 
 $family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 * {
@@ -26,6 +27,14 @@ h5 {
 .side-section {
   .right-card {
     border: 0;
+  }
+  .table-card {
+    padding: 20px;
+    padding-right: 0;
+  }
+
+  .rooms {
+    margin: 5px 0;
   }
   .card .right-card-body {
     padding-right: 0;
@@ -88,6 +97,33 @@ h5 {
       }
     }
   }
+}
+
+/* Date picker */
+::ng-deep .ant-input {
+  height: 50px;
+  border-radius: 0px;
+  font-size: 16px;
+  color: $dark-gray;
+}
+::ng-deep .ant-calendar-picker {
+  width: 100%;
+}
+
+::ng-deep .anticon {
+  color: $dark-gray;
+}
+
+::ng-deep .ant-input::placeholder {
+  color: $dark-gray !important;
+  opacity: 0.6;
+  font-weight: 400;
+}
+
+input[type="checkbox"] {
+  margin: 5px;
+  height: 20px;
+  width: 20px;
 }
 
 @media (max-width: 959px) {
