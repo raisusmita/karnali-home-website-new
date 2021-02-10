@@ -87,7 +87,7 @@
         </div>
       </div>
       <div class="side-section" fxFlex="30">
-        <div class="card right-card" *ngIf="roomService.roomComponent">
+        <div class="card right-card" *ngIf="roomComponent">
           <div class="card-body right-card-body">
             <!--Google map-->
             <iframe
@@ -125,10 +125,7 @@
         </div>
         <!--Google Maps-->
 
-        <div
-          class="card right-card table-card"
-          *ngIf="roomService.bookComponent"
-        >
+        <div class="card right-card table-card" *ngIf="bookComponent">
           <div class="card">
             <div class="card-body">
               <h5>Please fill up the form</h5>
