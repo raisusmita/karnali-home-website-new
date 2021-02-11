@@ -1,3 +1,5 @@
+import { CheckRoomService } from "./../home/check-room.service";
+import { RoomService } from "./room/room.service";
 import { HomeComponent } from "./../home/home.component";
 import { RouterModule } from "@angular/router";
 import { MainPageComponent } from "./main-page.component";
@@ -16,6 +18,7 @@ import { registerLocaleData } from "@angular/common";
 import en from "@angular/common/locales/en";
 import { GalleryComponent } from "./gallery/gallery.component";
 import { ContactComponent } from "./contact/contact.component";
+import { RoomAvailabilityService } from "../shared/services/room-availability.service";
 registerLocaleData(en);
 
 @NgModule({
