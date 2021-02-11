@@ -96,8 +96,7 @@ export class RoomComponent implements OnInit {
         this.availableRoomCategories.push({
           room_category_id: room[0].room_category.id,
           category: room[0].room_category.room_category,
-          image:
-            environment.serverURL + "storage/" + room[0].room_category.image,
+          image: environment.apiURL + "storage/" + room[0].room_category.image,
           type: room[0].room_category.room_type,
           price: room[0].room_category.room_price,
           totalNumber: room.length,
@@ -123,7 +122,7 @@ export class RoomComponent implements OnInit {
               room_category_id: result.data[key][0].room_category_id,
               category: result.data[key][0].room_category.room_category,
               image:
-                environment.serverURL +
+                environment.apiURL +
                 "storage/" +
                 result.data[key][0].room_category.image,
               type: result.data[key][0].room_category.room_type,
