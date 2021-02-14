@@ -16,7 +16,7 @@ export class RoomService {
   private readonly baseURL = environment.apiURL;
 
   getRoomCategory(): Observable<any> {
-    return this.http.get(this.baseURL + "available");
+    return this.http.get(this.baseURL + "availableByCategory");
   }
 
   addBooking(booking: any): Observable<any> {
