@@ -1,3 +1,6 @@
+* {
+  z-index: 99;
+}
 .overlay {
   width: 100%;
   height: 100%;
@@ -19,7 +22,6 @@ video {
   position: relative;
   float: left;
   margin-top: 40px;
-  margin-left: 17%;
 }
 
 /* .container-fluid {
@@ -27,10 +29,10 @@ video {
 } */
 
 .book {
+  margin-top: 50px;
+  position: relative;
+  float: right;
   border-radius: 0;
-  position: absolute;
-  right: 0;
-  margin: 40px 0;
   height: 57px;
   width: 220px;
   background-color: #ffb703;
@@ -41,12 +43,7 @@ video {
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-.wrapper {
-  padding: 0;
-}
-
 .main-content {
-  position: absolute;
   top: 25%;
   width: 100%;
   text-align: center;
@@ -82,7 +79,6 @@ video {
 }
 
 .room-search {
-  margin: 100px 260px 0px 260px;
   padding: 45px;
   border: 4px solid#fff3;
 }
@@ -181,8 +177,6 @@ video {
     margin-left: 0;
   }
   .room-search {
-    margin: 100px 30px 0px 30px;
-
     padding: 30px;
   }
   .search {
@@ -195,14 +189,12 @@ video {
 
 @media screen and (max-width: 1300px) {
   .room-search {
-    margin: 100px 110px 0px 110px;
     padding: 30px;
   }
 }
 
 @media screen and (max-width: 1000px) {
   .room-search {
-    margin: 100px 80px 0px 80px;
     padding: 30px;
   }
   .search {
@@ -212,7 +204,6 @@ video {
 
 @media screen and (max-width: 700px) {
   .room-search {
-    margin: 100px 50px 0px 50px;
     padding: 30px;
   }
   .search {
