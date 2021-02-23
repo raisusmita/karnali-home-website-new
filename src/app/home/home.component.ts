@@ -43,11 +43,13 @@ export class HomeComponent implements OnInit {
       .getRoomAvailabilityByDate(roomAvailabilityDatesParams)
       .subscribe((result) => {
         if (result && result.success) {
-          this.roomCheckService.availableRoomByDates = result.data;
-          this.roomService.fromSearchByDates = true;
-          if (this.roomCheckService) {
-            this.router.navigate(["/room"]);
-          }
+          setTimeout(() => {
+            this.roomCheckService.changeAvailableRoomByDates(result.data);
+            this.roomService.fromSearchByDates = true;
+            if (this.roomCheckService) {
+              this.router.navigate(["/room"]);
+            }
+          });
         }
       });
   }
