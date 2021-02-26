@@ -53,6 +53,8 @@ export class RoomComponent implements OnInit {
   checkedRoom: any = {};
   availableRoomCount: any = {};
 
+  bookComponent: boolean;
+  roomComponent: boolean;
   constructor(
     private roomCheckService: CheckRoomService,
     private roomService: RoomService,
@@ -69,6 +71,8 @@ export class RoomComponent implements OnInit {
     this.availableRoom = this.roomCheckService.availableRoomByDates;
     this.roomService.roomComponent = true;
     this.roomService.bookComponent = false;
+    this.roomComponent = this.roomService.roomComponent;
+    this.bookComponent = this.roomService.bookComponent;
     this.arrival = " Arrival Date";
     this.departure = " Departure Date";
     this.booking = {
@@ -92,8 +96,7 @@ export class RoomComponent implements OnInit {
         this.availableRoomCategories.push({
           room_category_id: room[0].room_category.id,
           category: room[0].room_category.room_category,
-          image:
-            environment.serverURL + "storage/" + room[0].room_category.image,
+          image: environment.serverURL + "storage/" + room[0].room_category.image,
           type: room[0].room_category.room_type,
           price: room[0].room_category.room_price,
           totalNumber: room.length,
@@ -138,6 +141,8 @@ export class RoomComponent implements OnInit {
   bookRoom(availableRoomCategory) {
     this.roomService.roomComponent = false;
     this.roomService.bookComponent = true;
+    this.roomComponent = this.roomService.roomComponent;
+    this.bookComponent = this.roomService.bookComponent;
     if (this.roomCheckService.checkDates) {
       this.booking.check_in_date = this.roomCheckService.checkDates.check_in_date;
       this.booking.check_out_date = this.roomCheckService.checkDates.check_out_date;

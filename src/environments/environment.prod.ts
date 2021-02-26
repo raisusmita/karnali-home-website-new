@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiURL: "http://213.136.87.52/api/",
+  apiURL: "https://karnalihome.com/api/",
+  // serverURL: "https://karnalihome.com/api/",
 };

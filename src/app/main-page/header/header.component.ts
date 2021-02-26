@@ -1,11 +1,12 @@
+import { CheckRoomService } from "./../../home/check-room.service";
 import { RoomService } from "./../room/room.service";
 import { Component, OnInit } from "@angular/core";
-import { CheckRoomService } from "src/app/home/check-room.service";
 
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",
   styleUrls: ["./header.component.scss"],
+  providers: [RoomService, CheckRoomService],
 })
 export class HeaderComponent implements OnInit {
   // components: any[] = [
@@ -14,7 +15,10 @@ export class HeaderComponent implements OnInit {
   //   { name: "GALLERY", path: "gallery" },
   //   { name: "CONTACT", path: "contact" },
   // ];
-  constructor(private roomService: RoomService) {}
+  constructor(
+    private roomService: RoomService,
+    private checkRoomService: CheckRoomService
+  ) {}
 
   ngOnInit() {}
 
@@ -22,5 +26,6 @@ export class HeaderComponent implements OnInit {
     this.roomService.roomComponent = true;
     this.roomService.bookComponent = false;
     this.roomService.fromSearchByDates = false;
+    this.checkRoomService.checkDates.length = 0;
   }
 }
