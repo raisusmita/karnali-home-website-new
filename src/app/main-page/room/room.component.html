@@ -2,7 +2,12 @@
 <div class="room-section">
   <div class="wrapper">
     <div class="main-section" fxLayout="row" fxLayout.lt-lg="column">
-      <div class="first-section" fxFlex="70">
+      <div class="first-section" fxFlex="60">
+        <div *ngIf="availableRoomCategories.length == 0">
+          <h4 class="no-available-room mt-5">
+            No room available at the moment
+          </h4>
+        </div>
         <div
           class="card left-card"
           *ngFor="let availableRoomCategory of availableRoomCategories"
@@ -86,7 +91,8 @@
           </div>
         </div>
       </div>
-      <div class="side-section" fxFlex="30">
+
+      <div class="side-section" fxFlex="40">
         <div class="card right-card" *ngIf="roomComponent">
           <div class="card-body right-card-body">
             <!--Google map-->

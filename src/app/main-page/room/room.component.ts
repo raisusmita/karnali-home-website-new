@@ -68,7 +68,11 @@ export class RoomComponent implements OnInit {
 
   initialize() {
     this.availableRoomCategories.length = 0;
-    this.availableRoom = this.roomCheckService.availableRoomByDates;
+    this.roomCheckService.currentAvailableRoomByDates.subscribe(
+      (availableRoom) => {
+        this.availableRoom = availableRoom;
+      }
+    );
     this.roomService.roomComponent = true;
     this.roomService.bookComponent = false;
     this.roomComponent = this.roomService.roomComponent;
@@ -96,7 +100,8 @@ export class RoomComponent implements OnInit {
         this.availableRoomCategories.push({
           room_category_id: room[0].room_category.id,
           category: room[0].room_category.room_category,
-          image: environment.serverURL + "storage/" + room[0].room_category.image,
+          image:
+            environment.serverURL + "storage/" + room[0].room_category.image,
           type: room[0].room_category.room_type,
           price: room[0].room_category.room_price,
           totalNumber: room.length,
